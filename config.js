@@ -31,21 +31,13 @@ exports.getConnParams = function () {
         protocol: 'amqps',
         hostname: process.env.RMQ_HOSTNAME,
         port: process.env.RMQ_PORT,
-        vhost: process.env.RMQ_GROUP_ID,
-        username: process.env.RMQ_GROUP_ID,
+        vhost: process.env.RMQ_VHOST,
+        username: process.env.RMQ_INFRA_ID,
         password: process.env.RMQ_AUTH_KEY,
         locale: 'en_US',
         frameMax: 0,
         heartbeat: 0
     };
-
-    console.log("");
-    console.log("Using the following endpoint and credentials:");
-    console.log("\tHostname:\t" + process.env.RMQ_HOSTNAME);
-    console.log("\tPort:\t\t" +   process.env.RMQ_PORT);
-    console.log("\tGroup ID:\t" + process.env.RMQ_GROUP_ID);
-    console.log("\tAuth Key:\t" + process.env.RMQ_AUTH_KEY);
-    console.log("");
 
     return connParams;
 };
@@ -53,19 +45,16 @@ exports.getConnParams = function () {
 exports.getRmqSettings = function () {
     return {
         queues: {
-            raw : 'raw_q',
-            notification : 'not_q',
+            raw : 'dc_acct_q',
             syslog : 'sys_log_q',
             adminOut : 'admin_out_q'
         },
         exchanges : {
-            data : 'data.dx',
-            actuation : 'actuation.dx',
+            data : 'acct.dx',
             admin : 'admin.dx'
         },
         routingKeys : {
-            raw : 'raw',
-            notification : 'not',
+            dev_cloud : 'dc',
             admin_in : 'in',
             admin_out : 'out'
         }

@@ -91,5 +91,5 @@ The format of the record is as follows:
 | gid      | Number, uint32 | Yes | The Linux Group ID for the Device |
 | did      | String, UUID   | Yes | The Device ID |
 | dts      | Number, uint32 | Yes | Linux Time of the event |
-| msg      | Number, uint32 | Yes | Ammount of messages consumed during the transaction |
-| jif      | Number, uint32 | Yes | Ammount of computation consumed during the transaction |
+| msg      | Number, uint32 | Yes | Amount of messages consumed during the transaction |
+| jif      | Number, uint32 | Yes | Amount of computation consumed during the transaction |

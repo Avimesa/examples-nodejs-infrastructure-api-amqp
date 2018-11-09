@@ -23,13 +23,6 @@ function accountingRecords(){
     const connParams = config.getConnParams();
     const rmqSettings = config.getRmqSettings();
 
-    connParams.vhost = "infrastructure";
-    connParams.username = "TODO";
-    connParams.password = "TODO";
-
-    const exchangeName = rmqSettings.exchanges.data;
-    const routingKey = rmqSettings.routingKeys.raw;
-
     // Connect to the server
     amqp.connect(connParams, function(err, conn) {
         if (err){
@@ -55,7 +48,7 @@ function accountingRecords(){
                             // Setup a route for this queue
                             ch.bindQueue(q.queue, 'acct.dx', 'dc');
 
-                            // and subscribe, no ack as we're not in charge of persistance with a temporary use case
+                            // and subscribe, no ack as we're not in charge of persistence with a temporary use case
                             ch.consume(q.queue, function(msg) {
                                 // print message
                                 console.log(msg.content.toString());
