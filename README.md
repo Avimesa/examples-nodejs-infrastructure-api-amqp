@@ -93,3 +93,11 @@ The format of the record is as follows:
 | dts      | Number, uint32 | Yes | Linux Time of the event |
 | msg      | Number, uint32 | Yes | Amount of messages consumed during the transaction |
 | jif      | Number, uint32 | Yes | Amount of computation consumed during the transaction |
+
+
+<a id="list-groups"></a>
+### list-groups
+
+##### Summary:
+
+This example shows how to list the Groups that belong to this Avimesa Device Cloud instance.
