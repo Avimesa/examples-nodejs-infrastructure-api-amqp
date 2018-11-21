@@ -7,21 +7,6 @@
  * in the Avimesa Open License:  http://avimesa.com/openlicense.txt
  */
 
-'use strict';
+'use strict'
 
-const api = require('../lib/infra-api-amqp');
-
-/**
- * queue-temp-subscriber example
- *
- * @returns none
- */
-function accountingRecords(){
-    console.log("accounting-records");
-
-    api.acctRecordListener(function (err,msg) {
-       console.log(msg);
-	});
-}
-
-accountingRecords();
+module.exports = require('./logger');

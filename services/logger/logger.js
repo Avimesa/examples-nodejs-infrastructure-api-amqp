@@ -9,19 +9,14 @@
 
 'use strict';
 
-const api = require('../lib/infra-api-amqp');
-
-/**
- * queue-temp-subscriber example
- *
- * @returns none
- */
-function accountingRecords(){
-    console.log("accounting-records");
-
-    api.acctRecordListener(function (err,msg) {
-       console.log(msg);
-	});
+function log(msg, file, type){
+    console.log(`${Date().toString()}:\t ${file.padEnd(16)}:\t ${type}:\t ${msg}`);
 }
 
-accountingRecords();
+exports.log_info = function (file, msg){
+    log(msg, file, 'Info');
+};
+
+exports.log_error = function (file, msg){
+    log(msg, file, 'Error');
+};
