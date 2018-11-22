@@ -20,7 +20,7 @@ var pgClient = null;
 function getConnStr(){
 	//const cfg = config.postgres;
 	//const connStr = `postgres://${cfg.username}:${cfg.password}@${cfg.hostname}:${cfg.port}/${cfg.database}`;
-	const connStr = `postgres://infrastructure:infrastructure@$localhost:5432/infrastructure`;
+	const connStr = `postgres://_infrastructure:infrastructure@localhost:5432/_infrastructure`;
 	return connStr;
 }
 
@@ -59,15 +59,15 @@ exports.disconnect = function() {
 	}
 };
 
-exports.writeAcctRecord = function(dts, json_data, write_cb){
+exports.writeAcctRecord = function(json_data, write_cb){
 	logger.log_info(scriptName, 'writeAcctRecord');
 
 	if (pgClient !== null) {
-		const sqlcmd = `INSERT INTO dcacct(time,data) values($1, $2)`;
+		const sqlcmd = `INSERT INTO dcacct(time,gid,did,dts,msg,jif) values($1, $2, $3, $4, $5, $6)`;
 
 		// convert date from paylod for insertion
-		const dts = new Date(dts);
-		const data = [dts, json_data];
+		const dts = new Date(json_data.dts);
+		const data = [dts, json_data.gid, json_data.did, json_data.dts, json_data.msg, json_data.jif];
 
 		pgClient.query(sqlcmd, data, (err, res) => {
 			if (err){

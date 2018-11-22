@@ -16,6 +16,23 @@ const db     = require('../services/postgres');
 const path   = require('path');
 const scriptName = path.basename(__filename);
 
+function listen(){
+    api.acctRecordListener(function (err,msg) {
+        if(err){
+            logger.log_error(scriptName, "RMQ error, exitting...");
+            process.exit(0);
+        }
+        else {
+            var acctRecord = JSON.parse(msg)
+            db.writeAcctRecord(acctRecord, function (ok) {
+                if(!ok){
+                    logger.log_error(scriptName, "PG write error");
+                }
+            });
+        }
+    });
+}
+
 /**
  * dcacctpg - Device Cloud Accounting Record Postgres
  *
@@ -25,20 +42,7 @@ function dcacctpg(){
 	logger.log_info(scriptName, "Device Cloud Accounting Record Postgres");
 
 	if (db.connect()) {
-		api.acctRecordListener(function (err,msg) {
-			if(err){
-				logger.log_error(scriptName, "RMQ error, exitting...");
-				process.exit(0);
-			}
-			else {
-				var acctRecord = JSON.parse(msg)
-				db.writeAcctRecord(acctRecord.dts, acctRecord, function (ok) {
-					if(!ok){
-						logger.log_error(scriptName, "PG write error");
-					}
-				});
-			}
-		});
+        listen();
 	}
 	else {
 		logger.log_error(scriptName, "Unable to connect to database");

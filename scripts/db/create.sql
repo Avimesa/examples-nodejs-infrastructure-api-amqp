@@ -10,24 +10,21 @@ CREATE DATABASE :v1;
 -- Enable the timescaledb extension on this database
 CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 
--- Create raw table
+-- Create dcacct table
 CREATE TABLE dcacct (
  time TIMESTAMP NOT NULL,
- data jsonb
+ gid integer,
+ did text,
+ dts integer,
+ msg integer,
+ jif integer
 );
 
-GRANT ALL PRIVILEGES ON TABLE raw TO :v1;
+GRANT ALL PRIVILEGES ON TABLE dcacct TO :v1;
 SELECT create_hypertable('dcacct', 'time');
 
 -- add primary key after previous call to prevent error
 ALTER TABLE dcacct ADD COLUMN id serial PRIMARY KEY;
 GRANT USAGE, SELECT ON SEQUENCE dcacct_id_seq TO :v1;
 
--- Create syslog table
-CREATE TABLE syslog (
- id serial PRIMARY KEY,
- data text
-);
 
-GRANT ALL PRIVILEGES ON TABLE syslog TO :v1;
-GRANT USAGE, SELECT ON SEQUENCE syslog_id_seq TO :v1;
