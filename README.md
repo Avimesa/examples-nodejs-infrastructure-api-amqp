@@ -23,25 +23,28 @@ This project contains simple example of how to interface with the Avimesa Device
 
 - Node.js
 - A valid Avimesa Device Cloud Infrastructure ID and Authentication Key
-- Private Avimesa Infrastructure API npm package [here](#https://github.com/Avimesa/sdk-nodejs-infrastructure-api-amqp)
+
 
 [Top](#toc)<br>
 <a id="3.-usage"></a>
 ## 3. Usage
 
 
-Get the private Infrastructure:
+Install:
+wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-5.3.4-1.x86_64.rpm 
+sudo yum localinstall grafana-5.3.4-1.x86_64.rpm
 
-```
-git clone https://github.com/Avimesa/sdk-nodejs-infrastructure-api-amqp.git
-```
+Start:
+sudo service grafana-server start
+
+
 
 Checkout and initialize the project:
 
 ```
 git clone https://github.com/Avimesa/examples-nodejs-infrastructure-api-amqp.git
 cd examples-nodejs-infrastructure-api-amqp
-npm install ../sdk-nodejs-infrastructure-api-amqp
+
 npm init
 ```
 

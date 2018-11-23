@@ -13,7 +13,7 @@ CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 -- Create dcacct table
 CREATE TABLE dcacct (
  time TIMESTAMP NOT NULL,
- gid integer,
+ gid text,
  did text,
  dts integer,
  msg integer,

@@ -67,8 +67,11 @@ exports.writeAcctRecord = function(json_data, write_cb){
 
 		// convert date from paylod for insertion
 		const dts = new Date(json_data.dts);
-		const data = [dts, json_data.gid, json_data.did, json_data.dts, json_data.msg, json_data.jif];
-
+		// use string here for easier sorting
+		const gidStr = json_data.gid.toString();
+		// create data to insert
+		const data = [dts, gidStr, json_data.did, json_data.dts, json_data.msg, json_data.jif];
+		// insert
 		pgClient.query(sqlcmd, data, (err, res) => {
 			if (err){
 				logger.log_error(scriptName, `${err.stack}`);
