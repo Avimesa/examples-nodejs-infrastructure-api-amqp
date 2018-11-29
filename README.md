@@ -32,16 +32,6 @@ This project contains simple example of how to interface with the Avimesa Device
 <a id="3.-usage"></a>
 ## 3. Usage
 
-
-Install:
-wget https://s3-us-west-2.amazonaws.com/grafana-releases/release/grafana-5.3.4-1.x86_64.rpm 
-sudo yum localinstall grafana-5.3.4-1.x86_64.rpm
-
-Start:
-sudo service grafana-server start
-
-
-
 Checkout and initialize the project:
 
 ```
