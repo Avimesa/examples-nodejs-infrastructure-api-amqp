@@ -9,8 +9,8 @@
 
 'use strict';
 
+const api = require('@avimesa/infra-api-amqp');
 const logger = require('../services/logger');
-const api    = require('../lib/infra-api-amqp');
 const db     = require('../services/postgres');
 
 const path   = require('path');
@@ -38,7 +38,7 @@ function listen(){
  *
  * @returns none
  */
-function dcacctpg(){
+function dcacctpgExample(){
 	logger.log_info(scriptName, "Device Cloud Accounting Record Postgres");
 
 	if (db.connect()) {
@@ -49,4 +49,4 @@ function dcacctpg(){
 	}
 }
 
-dcacctpg();
+dcacctpgExample();

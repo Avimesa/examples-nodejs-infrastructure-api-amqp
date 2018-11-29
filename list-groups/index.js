@@ -9,7 +9,7 @@
 
 'use strict';
 
-const api = require('../lib/infra-api-amqp');
+const api = require('@avimesa/infra-api-amqp');
 
 function listGroupsExample() {
 	console.log("list-groups");

@@ -9,14 +9,14 @@
 
 'use strict';
 
-const api = require('../lib/infra-api-amqp');
+const api = require('@avimesa/infra-api-amqp');
 
 /**
  * queue-temp-subscriber example
  *
  * @returns none
  */
-function accountingRecords(){
+function accountingRecordsExample(){
     console.log("accounting-records");
 
     api.acctRecordListener(function (err,msg) {
@@ -24,4 +24,4 @@ function accountingRecords(){
 	});
 }
 
-accountingRecords();
+accountingRecordsExample();

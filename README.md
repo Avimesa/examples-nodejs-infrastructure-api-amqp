@@ -12,7 +12,10 @@ This project contains simple example of how to interface with the Avimesa Device
 - [2. Prerequisites](#2.-prerequisites)
 - [3. Usage](#3.-usage)
 - [4. Examples](#4.-examples)
-    - [accounting-records](#accounting-records)
+    - [accounting-records](#4.1-examples)
+    - [add-group](#4.2-examples)
+    - [dcacct-pg](#4.3-examples)
+    - [list-groups](#4.4-examples)
 
 <a id="1.-overview"></a>
 ## 1. Overview
@@ -67,10 +70,10 @@ RMQ_AUTH_KEY= *<TODO>*
 NODE_TLS_REJECT_UNAUTHORIZED=0
 ```
 
-Run the example from its directory, for example to run the `accounting-records` example, do ths following from the root of the project:
+Run the example from its directory, for example to run the `list-groups` example, do ths following from the root of the project:
 
 ```
-node accounting-records/index.js
+node list-groups/index.js
 ```
 
 [Top](#toc)<br>
@@ -78,7 +81,7 @@ node accounting-records/index.js
 ## 4. Examples
 
 
-<a id="accounting-records"></a>
+<a id="#4.1-examples"></a>
 ### accounting-records
 
 ##### Summary:
@@ -107,9 +110,43 @@ The format of the record is as follows:
 | jif      | Number, uint32 | Yes | Amount of computation consumed during the transaction |
 
 
-<a id="list-groups"></a>
+
+
+
+
+[Top](#toc)<br>
+<a id="#4.2-examples"></a>
+### add-group
+
+##### Summary:
+
+This example shows how to add a Group to the Device Cloud.  The Group ID must be a 32 character string using a-f or 0-9 (i.e. base16 values for a UUID...).  It also must be unique in the Avimesa Device Cloud instance, so one could use a UUID generator to make the Group ID.
+
+In response to a successful Group addition, you get a 32 character string (base16, UUID) authentication key.  
+
+The combination of the Group ID and Authentication key can then be used by a client application, such as the Node.js Group SDK [here](https://www.npmjs.com/package/@avimesa/group-api-amqp). 
+
+
+
+
+[Top](#toc)<br>
+<a id="#4.3-examples"></a>
+### dcacct-pg
+
+##### Summary:
+
+This is basically the same as the 'accounting-record' example above.  But it stores the records to a Postgres database!
+
+Check out the /scripts/db directory for utilities used to create the database.
+
+Postgres 10 with TimescaleDB are required.
+
+ 
+
+[Top](#toc)<br>
+<a id="#4.4-examples"></a>
 ### list-groups
 
 ##### Summary:
 
-This example shows how to list the Groups that belong to this Avimesa Device Cloud instance.
+This example shows how to list the Groups that belong to this Avimesa Device Cloud instance, for example a Group added through the 'add-group' example.

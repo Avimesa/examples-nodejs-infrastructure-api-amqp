@@ -9,11 +9,22 @@
 
 'use strict';
 
+const api = require('@avimesa/infra-api-amqp');
 
-function validGroupId(id) {
-	var regExp = new RegExp(/^[0-9a-f]{32}$/);
-	return regExp.test(id)
+function addGroupExample() {
+	console.log("add-group");
+
+	var groupId = "";
+
+	api.addGroup(groupId, function (err, msg) {
+		if (err) {
+			console.log(`Error: ${msg}`);
+		}
+		else {
+			console.log("Group Added!")
+			console.log(`Group ID: ${groupId}, Auth Key: ${msg}`);
+		}
+	});
 }
 
-module.exports.validGroupId = validGroupId;
-
+addGroupExample();
