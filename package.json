@@ -1,6 +1,6 @@
 {
-  "name": "avmsa-infra-api-amqp",
-  "version": "1.0.0",
+  "name": "@avimesa/examples-infra-api-amqp",
+  "version": "0.0.0",
   "description": "Infrastructure API examples using AMQP (0-9-1) and Node.js",
   "main": "index.js",
   "scripts": {
@@ -10,8 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/Avimesa/examples-nodejs-infrastructure-api-amqp.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "travimesa",
+  "license": "SEE LICENSE IN LICENSE",
   "bugs": {
     "url": "https://github.com/Avimesa/examples-nodejs-infrastructure-api-amqp/issues"
   },
