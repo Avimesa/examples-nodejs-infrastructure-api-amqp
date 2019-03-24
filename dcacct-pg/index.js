@@ -17,7 +17,7 @@ const path   = require('path');
 const scriptName = path.basename(__filename);
 
 function listen(){
-    api.acctRecordListener(function (err,msg) {
+    api.acctRecordConsume(function (err,msg,ack) {
         if(err){
             logger.log_error(scriptName, "RMQ error, exitting...");
             process.exit(0);
@@ -26,8 +26,11 @@ function listen(){
             var acctRecord = JSON.parse(msg)
             db.writeAcctRecord(acctRecord, function (ok) {
                 if(!ok){
+					ack(false);
                     logger.log_error(scriptName, "PG write error");
-                }
+                } else {
+                	ack(true);
+				}
             });
         }
     });
