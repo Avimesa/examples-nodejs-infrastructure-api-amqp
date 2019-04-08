@@ -41,20 +41,14 @@ cd examples-nodejs-infrastructure-api-amqp
 npm init
 ```
 
-Update the credentials in the .env file in the root of the project:
+Update the API key and Password in the example:
 
 ```
-# RMQ Server Hostname
-RMQ_HOSTNAME=rmqserv001.avimesa.com
-
-# RMQ Server Port
-RMQ_PORT=5672
-
-# RMQ Group ID / Vhost
-RMQ_GROUP_ID= *<TODO>*
-
-# RMQ Authentication Key
-RMQ_AUTH_KEY= *<TODO>*
+api.setConnParams({
+    hostname: 'rmqserv001.avimesa.com',
+    apiKey: 'TODO',
+    apiPassword: 'TODO',
+});
 ```
 
 Run the example from its directory, for example to run the `list-groups` example, do ths following from the root of the project:

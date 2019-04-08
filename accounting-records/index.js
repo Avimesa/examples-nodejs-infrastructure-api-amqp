@@ -19,6 +19,12 @@ const api = require('@avimesa/infra-api-amqp');
 function accountingRecordsExample(){
     console.log("accounting-records");
 
+	api.setConnParams({
+		hostname: 'rmqserv001.avimesa.com',
+		apiKey: '',
+		apiPassword: '',
+	});
+
     api.acctRecordListener(function (err,msg) {
        console.log(msg);
 	});

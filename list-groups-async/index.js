@@ -6,11 +6,9 @@ const listGroupsAsyncExample = async function() {
 	console.log("list-groups-async");
 
 	api.setConnParams({
-		hostname: "FIXME",
-		vhost: 'FIXME',
-		username: "FIXME",
-		password: "FIXME",
-		port: 5671
+		hostname: 'rmqserv001.avimesa.com',
+		apiKey: '',
+		apiPassword: '',
 	});
 
 	const response = await api.listGroupsAsync();

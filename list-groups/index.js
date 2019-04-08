@@ -14,6 +14,12 @@ const api = require('@avimesa/infra-api-amqp');
 function listGroupsExample() {
 	console.log("list-groups");
 
+	api.setConnParams({
+		hostname: 'rmqserv001.avimesa.com',
+		apiKey: '',
+		apiPassword: '',
+	});
+
 	api.listGroups(function (err, groups) {
 		if (err) {
 			console.log("Error");

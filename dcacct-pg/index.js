@@ -17,13 +17,19 @@ const path   = require('path');
 const scriptName = path.basename(__filename);
 
 function listen(){
+	api.setConnParams({
+		hostname: 'rmqserv001.avimesa.com',
+		apiKey: '',
+		apiPassword: '',
+	});
+
     api.acctRecordConsume(function (err,msg,ack) {
         if(err){
             logger.log_error(scriptName, "RMQ error, exitting...");
             process.exit(0);
         }
         else {
-            var acctRecord = JSON.parse(msg)
+            var acctRecord = JSON.parse(msg);
             db.writeAcctRecord(acctRecord, function (ok) {
                 if(!ok){
 					ack(false);
