@@ -20,7 +20,7 @@ function accountingRecordsExample(){
     console.log("accounting-records");
 
 	api.setConnParams({
-		hostname: 'rmqserv001.avimesa.com',
+		hostname: 'queues.avimesacorp.net',
 		apiKey: '',
 		apiPassword: '',
 	});

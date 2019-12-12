@@ -15,7 +15,7 @@ function listGroupsExample() {
 	console.log("list-groups");
 
 	api.setConnParams({
-		hostname: 'rmqserv001.avimesa.com',
+		hostname: 'queues.avimesacorp.net',
 		apiKey: '',
 		apiPassword: '',
 	});
