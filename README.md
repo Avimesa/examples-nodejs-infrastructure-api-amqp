@@ -45,7 +45,7 @@ Update the API key and Password in the example:
 
 ```
 api.setConnParams({
-    hostname: 'rmqserv001.avimesa.com',
+    hostname: 'queues.avimesacorp.net',
     apiKey: 'TODO',
     apiPassword: 'TODO',
 });
