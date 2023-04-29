@@ -18,7 +18,7 @@
   "homepage": "https://github.com/Avimesa/examples-nodejs-infrastructure-api-amqp#readme",
   "dependencies": {
     "@avimesa/infra-api-amqp": "^0.0.18",
-    "amqplib": "^0.5.3",
+    "amqplib": "^0.10.3",
     "dotenv": "^6.2.0",
     "pg": "^7.9.0"
   }
